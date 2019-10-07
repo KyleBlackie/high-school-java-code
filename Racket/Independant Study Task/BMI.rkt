@@ -1,0 +1,36 @@
+#lang racket
+
+(display (string-append "Body Mass Index." "\n" "This program will calculate a persons BMI based off of the height and weight input into this program in either the metric or imperial systems"))
+(display "\nWhat system do you want to use?\nMetric or Imperial?\nType metric for metric system (Kg and M) or imperial for imperial system (in and lbs).")
+
+(define system (read-line))
+(display (string-append "\n" "What is your height?"))
+(define height (string->number (read-line)))
+(display (string-append "\n" "What is your weight?"))
+(define weight (string->number (read-line)))
+
+(define (metric)
+  (classification(/ weight (expt height 2)))
+  )
+
+(define (imperial)
+  (classification (/ (* weight 703)(expt height 2)))
+  )
+
+(define (classification bmi)
+  (display "You are classified as ")
+  (cond
+    [(< bmi 16) (display "Starvation")]
+    [(< bmi 18) (display "Underweight")]
+    [(<= bmi 24) (display "Ideal")]
+    [(<= bmi 30) (display "Overweight")]
+    [(<= bmi 40) (display "Obese")]
+    [(> bmi 40) (display "Morbidly Obese")]
+    )
+  )
+
+(cond
+  [(equal? system "metric") (metric) ] 
+  [(equal? system "imperial") (imperial)]
+  [else (display"invalid system")]
+  )

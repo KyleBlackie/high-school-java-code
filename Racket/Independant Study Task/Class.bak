@@ -1,0 +1,30 @@
+#lang racket
+
+;define a class called player
+(define player%
+  ;with the parent class object%
+  (class object%
+    (super-new)
+    ;initialization / constructor arguments
+    (init-field name age team)
+    ;getters
+    (define/public (get-age) age)
+    (define/public (get-name) name)
+    (define/public (get-team) team)
+    ;setters
+    (define/public (set-age new_age) (set! age new_age))
+
+    ;toString
+    (define/public (to-string) (display
+    ))
+
+;create a player% object called player and give it the proper parameters
+(define player (new player% [name "Kyle Blackie"] [age 16] [team "Oakville FC"]))
+;test getters
+(send player get-age)
+(send player get-name)
+(send player get-team)
+;test setters
+(send player set-age 17)
+
+(send player get-age)

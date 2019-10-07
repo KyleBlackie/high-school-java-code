@@ -1,0 +1,11 @@
+#lang racket
+
+;loop that gets input from user
+(let loop ()
+  ;ask user for a number
+  (display "Enter a number between 10 and 99")
+  ;set a variable to the user's input
+  (define number (string->number(read-line)))
+  ;check if the number is valid, if not loop to the top/ask again
+  (when (or (< number 10) (> number 99)) (display "The number must be between 10 and 99.\n") (loop)))
+
